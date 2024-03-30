@@ -2,10 +2,33 @@ import React from "react";
 import Logout from "/SVG/logout.svg";
 import Category from "/SVG/category.svg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+//Animations from framer motion
+const Sidebar_anime = {
+  initial: { opacity: 0, x: -1000 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.5,
+      duration: 0.8,
+      type: "spring",
+      bounce: 0.3,
+      ease: "easeInOut",
+    },
+  },
+};
+
 function Sidebar() {
   return (
     <div className=" z-30  h-screen fixed left-0 top-0 bg-[#10141f] py-4 pl-4 ">
-      <div className="flex px-2 bg-[#161d2f] flex-col items-center justify-between py-5  h-full">
+      <motion.div
+        variants={Sidebar_anime}
+        initial="initial"
+        animate="animate"
+        className="flex px-2 bg-[#161d2f] flex-col items-center justify-between py-5  h-full"
+      >
         <div className="flex bg-[#161d2f] flex-col items-center gap-4 h-full text-[#57678c] text-2xl">
           <img src="/Images/logo.png" alt="logo" className=" w-8 mb-6" />
 
@@ -26,7 +49,7 @@ function Sidebar() {
             <img src={Logout} alt="" />
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -1,5 +1,33 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
+//Animations from framer motion
+const loginForm = {
+  initial: { opacity: 0, scale: 0 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, delay: 0.7, type: "spring" },
+  },
+};
+
+const Btn_anime = {
+  initial: { opacity: 0, x: -1000 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.9, delay: 1.6, type: "spring" },
+  },
+  hover: {
+    y: 5,
+    transition: { duration: 0.7, ease: "easeIn", type: "spring" },
+  },
+  onClick: {
+    scale: 0.9,
+    transition: { duration: 0.5, ease: "easeIn", type: "spring" },
+  },
+};
 
 function Signup() {
   const navigate = useNavigate();
@@ -24,7 +52,12 @@ function Signup() {
     navigate("/home");
   };
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-14">
+    <motion.div
+      variants={loginForm}
+      initial="initial"
+      animate="animate"
+      className="flex flex-col items-center justify-center h-full gap-14"
+    >
       <div className="flex flex-col gap-1 items-center">
         <div className="px-[14px] py-3  border-2 rounded-full border-white flex justify-center items-center bg-white text-[#10141f] text-5xl ">
           <i className="uil uil-user"></i>
@@ -115,18 +148,23 @@ function Signup() {
             />
           </div>
 
-          <button
+          <motion.button
+            variants={Btn_anime}
+            initial="initial"
+            animate="animate"
+            whileHover="hover"
+            whileTap="onClick"
             onClick={handleSubmit}
             className="bg-white mt-5 py-3 px-2 text-[#161d2f] rounded-full "
           >
             Register
-          </button>
+          </motion.button>
         </form>
         <div>
-          Already have an account? <Link to={"login"}>Login</Link>
+          Already have an account? <Link to={"/"}>Login</Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
