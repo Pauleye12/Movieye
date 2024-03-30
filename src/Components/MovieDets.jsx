@@ -46,7 +46,7 @@ function MovieDets() {
         style={backdropStyle}
         className=" w-full rounded-md h-full bg-[#00000017] flex items-end justify-center px-3 py-2 pb-16 "
       >
-        <div className="flex justify-between max-w-[1000px] gap-10 w-full">
+        <div className="flex flex-col sm:flex-row justify-between max-w-[1000px] gap-10 w-full">
           <div className="flex flex-col items-start w-full  ">
             <p className=" text-4xl font-bold text-white ">{movieDets.title}</p>
             <p className=" ">{movieDets.tagline}</p>
