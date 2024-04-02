@@ -52,6 +52,7 @@ function Login() {
       variants={loginForm}
       initial="initial"
       animate="animate"
+      exit="exit"
       className="flex flex-col items-center justify-center h-full gap-14"
     >
       <div className="flex flex-col gap-1 items-center">

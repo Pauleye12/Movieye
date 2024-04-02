@@ -12,4 +12,6 @@ Currently, two official plugins are available:
 1. signup, login and logout
 2. Bookmark Movies
 3. View Bookmrked movies
-4. Search for movies
+4. Search for movies -- done
+5. Exit Animations
+6. Loaders.

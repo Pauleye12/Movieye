@@ -121,8 +121,7 @@ function Navbar({ searchMovieFunct }) {
           Now Playing
         </motion.li>
       </motion.ul>
-      <motion.div
-        variants={Child_anime}
+      <div
         onClick={() => {
           setShowOptions((prev) => !prev);
         }}
@@ -142,7 +141,7 @@ function Navbar({ searchMovieFunct }) {
             </p>
           </div>
         )}
-      </motion.div>
+      </div>
       <motion.div
         variants={Child_anime}
         className="flex gap-6 ml-[10px] items-center text-[#57678c] text-4xl"

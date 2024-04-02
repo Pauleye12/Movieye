@@ -14,7 +14,7 @@ const Sidebar_anime = {
       delay: 0.5,
       duration: 0.8,
       type: "spring",
-      bounce: 0.3,
+      bounce: 0.1,
       ease: "easeInOut",
     },
   },

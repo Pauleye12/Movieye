@@ -1,5 +1,10 @@
 import React from "react";
-import { useOutletContext, useParams, useSearchParams } from "react-router-dom";
+import {
+  useLocation,
+  useOutletContext,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import MovieCard from "./MovieCard";
 import { useEffect, useState } from "react";
 import { searchMovies } from "../services";
@@ -8,6 +13,8 @@ function SearchPage() {
   const [movies, setMovies] = useState([]);
   const [searchErr, setSearchErr] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  console.log(location);
 
   const query = searchParams.get("query");
 
