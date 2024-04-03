@@ -4,7 +4,7 @@ import Logout from "/SVG/logout.svg";
 import SwitchUser from "/SVG/switchUser.svg";
 import Settings from "/SVG/setting-2.svg";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 //Animations from framer motion
 const Navbar_anime = {
@@ -48,6 +48,30 @@ const SubChild_anime = {
       ease: "easeIn",
       type: "spring",
       bounce: 0.3,
+    },
+  },
+};
+
+const Dropdown_anime = {
+  initial: { opacity: 0, scale: 0 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    x: "-50%",
+    transition: {
+      duration: 0.75,
+      type: "spring",
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    scale: 0,
+    opacity: 0,
+    x: 0,
+    transition: {
+      duration: 0.75,
+      type: "spring",
+      ease: "easeInOut",
     },
   },
 };
@@ -158,35 +182,56 @@ function Navbar({ searchMovieFunct }) {
           onMouseOut={() => {
             setShowDropdown(false);
           }}
+          onClick={() => setShowDropdown((prev) => !prev)}
         >
           <img
             className="rounded-full w-10 object-cover object-center aspect-square cursor-pointer "
             src="/Images/Test1.jpg"
             alt=""
           />
-          {showDropdown && (
-            <div className="absolute bottom-[-150px]  left-[-65%] translate-x-[-50%] w-max pt-7">
-              <ul className=" border px-4 py-2 rounded-lg text-left w-full flex flex-col text-white gap-2 bg-[#161d2f] text-base ">
-                <li className="cursor-pointer flex items-center gap-2">
-                  <img src="/Images/Test1.jpg" alt="" className="w-5 " />{" "}
-                  <span>View Profile</span>
-                </li>
-                <li className="cursor-pointer flex items-center gap-2">
-                  <img src={Settings} alt="" className="w-5 " />{" "}
-                  <span>Settings</span>
-                </li>
-                <li className="cursor-pointer flex items-center gap-2">
-                  <img src={SwitchUser} alt="logo" className="w-5 " />{" "}
-                  <span>Switch User</span>
-                </li>
-                <li className="cursor-pointer text-[red] flex items-center gap-2">
-                  {" "}
-                  <img src={Logout} alt="logo" className=" w-5 " />
-                  <span>Sign Out</span>
-                </li>
-              </ul>
-            </div>
-          )}
+          <AnimatePresence mode="wait">
+            {showDropdown && (
+              <motion.div
+                variants={Dropdown_anime}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="absolute bottom-[-150px]  left-[-65%] translate-x-[-50%] w-max pt-7"
+              >
+                <ul className=" border px-4 py-2 rounded-lg text-left w-full flex flex-col text-white gap-2 bg-[#161d2f] text-base ">
+                  <li
+                    onClick={() => setShowDropdown((prev) => !prev)}
+                    className="cursor-pointer flex items-center gap-2"
+                  >
+                    <img src="/Images/Test1.jpg" alt="" className="w-5 " />{" "}
+                    <span>View Profile</span>
+                  </li>
+                  <li
+                    onClick={() => setShowDropdown((prev) => !prev)}
+                    className="cursor-pointer flex items-center gap-2"
+                  >
+                    <img src={Settings} alt="" className="w-5 " />{" "}
+                    <span>Settings</span>
+                  </li>
+                  <li
+                    onClick={() => setShowDropdown((prev) => !prev)}
+                    className="cursor-pointer flex items-center gap-2"
+                  >
+                    <img src={SwitchUser} alt="logo" className="w-5 " />{" "}
+                    <span>Switch User</span>
+                  </li>
+                  <li
+                    onClick={() => setShowDropdown((prev) => !prev)}
+                    className="cursor-pointer text-[red] flex items-center gap-2"
+                  >
+                    {" "}
+                    <img src={Logout} alt="logo" className=" w-5 " />
+                    <span>Sign Out</span>
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </motion.div>
     </motion.div>

@@ -13,5 +13,5 @@ Currently, two official plugins are available:
 2. Bookmark Movies
 3. View Bookmrked movies
 4. Search for movies -- done
-5. Exit Animations
+5. Exit Animations-- Could not complete this one, faced a lot of shege
 6. Loaders.

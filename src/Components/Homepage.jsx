@@ -3,6 +3,7 @@ import TrendingMovieCard from "./TrendingMovieCard";
 import { useEffect, useState } from "react";
 import { getTrendingMovies } from "../services";
 import { getRecommendedMovies } from "../services";
+import Loader from "./Loader";
 
 function Homepage() {
   //Variables for trending movies
@@ -64,18 +65,26 @@ function Homepage() {
       <div className="flex flex-col gap-10">
         <h1 className="text-2xl font-semibold">Trending</h1>
         <div className=" overflow-x-auto w-full flex pb-6 gap-14  ">
-          {trendingMovies.map((movie) => (
-            <TrendingMovieCard key={movie.id} movie={movie} />
-          ))}
+          {trendingloading ? (
+            <Loader />
+          ) : (
+            trendingMovies.map((movie) => (
+              <TrendingMovieCard key={movie.id} movie={movie} />
+            ))
+          )}
         </div>
       </div>
       <div className="flex flex-col gap-10">
         <h1 className="text-2xl font-semibold">Recommended for you</h1>
 
         <div className="flex gap-3 gap-y-8 flex-wrap justify-around overflow-hidden ">
-          {recommendedMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
+          {recommendedLoading ? (
+            <Loader />
+          ) : (
+            recommendedMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))
+          )}
         </div>
       </div>
     </div>
