@@ -65,19 +65,19 @@ function MovieDets() {
             </div>
             <p>{movieDets.overview}</p>
           </div>
-          <div className="flex flex-col items-center  w-full  ">
-            <div className="flex flex-col gap-2">
+          <div className="flex flex-col marker: w-full  ">
+            <div className="flex text-wrap flex-col gap-2">
               <p>
                 <span className="text-lg font-semibold">Status</span>:{" "}
                 {movieDets.status}
               </p>
               {genreArray && (
-                <p className="flex items-center gap-1">
+                <p className="flex items-center w-full flex-wrap gap-1">
                   <span className="text-lg font-semibold">Genre: </span>
-                  {genreArray &&
-                    genreArray.map((genre, index) => (
-                      <p key={index}>{genre},</p>
-                    ))}
+
+                  {genreArray.map((genre, index) => (
+                    <p key={index}>{genre},</p>
+                  ))}
                 </p>
               )}{" "}
             </div>

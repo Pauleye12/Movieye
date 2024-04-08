@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 
 function Layout() {
   return (
-    <div className="bg-[#10141f] text-white pt-[100px] min-h-screen pl-24  w-full  ">
+    <div className="bg-[#10141f] text-white pt-[90px] min-h-screen pl-[80px]  w-full  ">
       <Navbar />
       <Sidebar />
 
